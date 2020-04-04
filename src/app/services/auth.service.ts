@@ -27,4 +27,13 @@ export class AuthService {
     }
   }
 
+  onLogout() {
+    try{
+      this.afAuth.signOut();
+      this.isLogged = false;
+    } catch (error) {
+      console.log('Logout failed', error);
+    }
+  }
+
 }
