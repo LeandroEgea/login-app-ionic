@@ -24,7 +24,7 @@ export class AuthService {
   async onRegister(user:User) {
     try{
       const credential = await this.afAuth.createUserWithEmailAndPassword(user.email, user.password);
-      this.isLogged = true;
+      this.isLogged = false;
       return credential;
     } catch (error) {
       console.log('Register failed', error);
