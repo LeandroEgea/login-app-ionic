@@ -29,6 +29,7 @@ export class AuthService {
       return credential;
     } catch (error) {
       console.log('Register failed', error);
+      throw error;
     }
   }
 
