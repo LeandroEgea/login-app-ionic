@@ -18,6 +18,7 @@ export class AuthService {
       return credential;
     } catch (error) {
       console.log('Login failed', error);
+      throw error;
     }
   }
 

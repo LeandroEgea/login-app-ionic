@@ -12,9 +12,16 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from './../environments/environment';
 
+import { ErrormodalPage } from './errormodal/errormodal.page';
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent, 
+    ErrormodalPage
+  ],
+  entryComponents: [
+    ErrormodalPage
+  ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
