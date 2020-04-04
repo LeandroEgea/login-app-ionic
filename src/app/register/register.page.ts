@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { User } from '../shared/user.class';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  user:User = new User
 
-  constructor() { }
+  constructor(private authSyc: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  async onRegister(){
+    const user = await this.authSyc.onRegister(this.user);
+    
+    if (user) {
+      console.log('User created!!!');
+      this.router.navigateByUrl('/');
+    }
   }
 
 }
