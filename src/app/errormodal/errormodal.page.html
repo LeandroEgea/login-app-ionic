@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Error</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="onClose()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <p>{{ message }}</p>
+  </ion-content>
+  
