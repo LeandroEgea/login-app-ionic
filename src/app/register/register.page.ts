@@ -11,13 +11,13 @@ import { User } from '../shared/user.class';
 export class RegisterPage implements OnInit {
   user:User = new User
 
-  constructor(private authSyc: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   async onRegister(){
-    const user = await this.authSyc.onRegister(this.user);
+    const user = await this.authService.onRegister(this.user);
     
     if (user) {
       console.log('User created!!!');

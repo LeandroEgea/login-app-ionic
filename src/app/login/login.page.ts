@@ -11,13 +11,13 @@ import { User } from '../shared/user.class';
 export class LoginPage implements OnInit {
   user:User = new User
   
-  constructor(private authSyc: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   async onLogin(){
-    const user = await this.authSyc.onLogin(this.user);
+    const user = await this.authService.onLogin(this.user);
     
     if (user) {
       console.log('User logged!');
