@@ -6,14 +6,16 @@ import { User } from '../shared/user.class';
   providedIn: 'root'
 })
 export class AuthService {
-  public isLogged: any = false
+  public isLogged: boolean = false
   constructor(public afAuth: AngularFireAuth) { 
-    afAuth.authState.subscribe(user => this.isLogged = user);
+    //afAuth.authState.subscribe(user => this.isLogged = user);
   }
 
   async onLogin(user:User) {
     try{
-      return await this.afAuth.signInWithEmailAndPassword(user.email, user.password);
+      const credential = await this.afAuth.signInWithEmailAndPassword(user.email, user.password);
+      this.isLogged = true;
+      return credential;
     } catch (error) {
       console.log('Login failed', error);
     }
@@ -21,9 +23,20 @@ export class AuthService {
 
   async onRegister(user:User) {
     try{
-      return await this.afAuth.createUserWithEmailAndPassword(user.email, user.password);
+      const credential = await this.afAuth.createUserWithEmailAndPassword(user.email, user.password);
+      this.isLogged = true;
+      return credential;
     } catch (error) {
       console.log('Register failed', error);
+    }
+  }
+
+  onLogout() {
+    try{
+      this.afAuth.signOut();
+      this.isLogged = false;
+    } catch (error) {
+      console.log('Logout failed', error);
     }
   }
 
